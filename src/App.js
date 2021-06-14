@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Navbar from './components/Navbar/navbar';
+import Vehicles from './components/Vehicles/vehicles';
+import CreateVehicle from './components/CreateVehicle/createvehicle';
+import CreateLoads from './components/CreateLoad/createload';
+import VehicleLoads from './components/VehicleLoads/vehicleloads';
+import DeleiveryCharge from './components/Calculate/delieverycharge';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Router>
+          <Navbar/>
+          <section>
+            <switch>
+              <Route path="/" component={Vehicles} exact />
+              <Route path="/create-vehicle" component={CreateVehicle} />
+              <Route path="/create-load" component={CreateLoads} />
+              <Route path="/vehicleload/:id" component={VehicleLoads} />
+              <Route path="/delievery-charge/:id" component={DeleiveryCharge} />
+            </switch>
+          </section>
+        </Router>
     </div>
   );
 }
